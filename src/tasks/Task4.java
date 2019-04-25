@@ -1,4 +1,5 @@
-import java.util.stream.LongStream;
+package tasks;
+
 import java.util.stream.Stream;
 
 public class Task4 {
