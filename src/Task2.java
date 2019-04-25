@@ -6,10 +6,11 @@ import java.util.stream.Collectors;
 public class Task2 {
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("rough","bawAfs", "assa", "0", "w");
-        List<String> processedStrings = mapListOfStringsToUppercaseAntSortDesc(strings);
+        List<String> processedStrings = mapListOfStringsToUppercaseAndSortDesc(strings);
         processedStrings.forEach(System.out::println);
     }
-    public static List<String> mapListOfStringsToUppercaseAntSortDesc(List<String> list){
+
+    public static List<String> mapListOfStringsToUppercaseAndSortDesc(List<String> list){
         return list.stream()
                 .map(String::toUpperCase)
                 .sorted(Comparator.reverseOrder())
