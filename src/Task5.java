@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -10,14 +11,9 @@ public class Task5 {
                 .forEach(System.out::println);
     }
     public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
-        Stream.Builder<T> builder = Stream.builder();
-        List<T> collect1 = first.collect(Collectors.toList());
-        List<T> collect2 = second.collect(Collectors.toList());
-        long len = collect1.size() > collect2.size() ? collect2.size() : collect1.size();
-        for (int i = 0; i < len; i++) {
-            builder.add(collect1.get(i))
-                    .add(collect2.get(i));
-        }
-        return builder.build();
+        Iterator<T> secondIterator = second.iterator();
+        return first
+            .filter(e -> secondIterator.hasNext())
+            .flatMap(e -> Stream.of(e,secondIterator.next()));
     }
 }
